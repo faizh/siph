@@ -5,7 +5,9 @@ class Contact extends CI_Controller {
 
     public function index()
     {
-        $this->load->view('includes/v_header');
+        $page = 'contact';
+
+        $this->load->view('includes/v_header', compact('page'));
         $this->load->view('contents/v_team');
         $this->load->view('includes/v_footer');
     }

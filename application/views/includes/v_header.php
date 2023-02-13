@@ -50,14 +50,27 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="<?= base_url()?>">Home</a></li>
-          <li><a class="nav-link scrollto" href="<?= base_url()?>index.php/monitoring">Monitoring</a></li>
-          <li><a class="nav-link scrollto" href="<?= base_url() ?>index.php/contact">Contact</a></li>
-          <li class="dropdown"><a href="#"><span>faizhermawan</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#" class="text-danger">Logout</a></li>
-            </ul>
-          </li>
+          <li><a class="nav-link scrollto <?= ($page == 'home') ? 'active' : '' ?>" href="<?= base_url()?>">Home</a></li>
+
+          <?php if ($this->session->userdata('logged_in')){ ?>
+            <li><a class="nav-link scrollto <?= ($page == 'monitoring') ? 'active' : '' ?>" href="<?= base_url()?>index.php/monitoring">Monitoring</a></li>
+          <?php } ?>
+
+          <li><a class="nav-link scrollto <?= ($page == 'contact') ? 'active' : '' ?>" href="<?= base_url() ?>index.php/contact">Contact</a></li>
+          
+          <?php if ($this->session->userdata('logged_in')){ ?>
+            <li class="dropdown"><a href="#"><span><?= $this->session->userdata('username') ?></span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="<?= base_url()?>index.php/auth/logout" class="text-danger">Logout</a></li>
+              </ul>
+            </li>
+          <?php } else { ?>
+            <li class="dropdown"><a href="#"><span>Login Here</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="#">Login</a></li>
+              </ul>
+            </li>
+          <?php } ?>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
