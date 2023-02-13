@@ -34,6 +34,8 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -49,7 +51,7 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="<?= base_url()?>">Home</a></li>
-          <li><a class="nav-link scrollto" href="#services">Monitoring</a></li>
+          <li><a class="nav-link scrollto" href="<?= base_url()?>index.php/monitoring">Monitoring</a></li>
           <li><a class="nav-link scrollto" href="<?= base_url() ?>index.php/contact">Contact</a></li>
           <li class="dropdown"><a href="#"><span>faizhermawan</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
