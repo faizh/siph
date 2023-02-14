@@ -67,7 +67,7 @@
           <?php } else { ?>
             <li class="dropdown"><a href="#"><span>Login Here</span> <i class="bi bi-chevron-down"></i></a>
               <ul>
-                <li><a href="#">Login</a></li>
+                <li><a href="<?= base_url() ?>index.php/auth/login">Login</a></li>
               </ul>
             </li>
           <?php } ?>

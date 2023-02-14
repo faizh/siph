@@ -32,4 +32,13 @@ class M_monitoring extends CI_Model {
         return $this->db->get('t_component_status')->row();
     }
 
+    public function updateComponentStatus($data, $condition) {
+        if( !$this->db->update('t_component_status', $data, $condition) ){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
 }
