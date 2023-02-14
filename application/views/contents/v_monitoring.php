@@ -24,19 +24,19 @@
             <tr>
                 <td>Katup</td>
                 <td>
-                    <input type="checkbox" data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
+                    <input type="checkbox" <?= ($components['katup'] == 1) ? 'checked' : '' ?> data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
                 </td>
             </tr>
             <tr>
                 <td>Pompa</td>
                 <td>
-                    <input type="checkbox" data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
+                    <input type="checkbox" <?= ($components['lampu'] == 1) ? 'checked' : '' ?> data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
                 </td>
             </tr>
             <tr>
                 <td>Lampu</td>
                 <td>
-                    <input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
+                    <input type="checkbox" <?= ($components['pompa'] == 1) ? 'checked' : '' ?> data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
                 </td>
             </tr>
         </tbody>
@@ -53,7 +53,7 @@
             <div class="count-box">
               <i class="bi bi-water"></i>
               <div>
-                <span>200 cm</span>
+                <span><?= $components['ultrasonik'] ?> cm</span>
                 <p>Ketinggian Air</p>
               </div>
             </div>
@@ -63,7 +63,7 @@
             <div class="count-box">
               <i class="bi bi-percent" style="color: #ee6c20;"></i>
               <div>
-                <span>20%</span>
+                <span><?= $components['soilMoisture'] ?>%</span>
                 <p>Kelembaban Tanah</p>
               </div>
             </div>
@@ -73,7 +73,7 @@
             <div class="count-box">
               <i class="bi bi-lightbulb" style="color: #15be56;"></i>
               <div>
-                <span>40 jam</span>
+                <span><?= $components['durasiLampu'] ?> jam</span>
                 <p>Durasi Lampu Menyala</p>
               </div>
             </div>

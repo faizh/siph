@@ -164,10 +164,10 @@
             <a class="nav-link" data-bs-toggle="pill" href="#tab3">Sensor Ultrasonik</a>
           </li>
           <li>
-            <a class="nav-link" data-bs-toggle="pill" href="#tab3">Sensor LDR</a>
+            <a class="nav-link" data-bs-toggle="pill" href="#tab4">Sensor LDR</a>
           </li>
           <li>
-            <a class="nav-link" data-bs-toggle="pill" href="#tab3">Servo MG995</a>
+            <a class="nav-link" data-bs-toggle="pill" href="#tab5">Servo MG995</a>
           </li>
         </ul><!-- End Tabs -->
 
@@ -203,6 +203,34 @@
           </div><!-- End Tab 2 Content -->
 
           <div class="tab-pane fade show" id="tab3">
+            <p>Consequuntur inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-check2"></i>
+              <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
+            </div>
+            <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi dolorum non eveniet magni quaerat nemo et.</p>
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-check2"></i>
+              <h4>Incidunt non veritatis illum ea ut nisi</h4>
+            </div>
+            <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
+          </div><!-- End Tab 3 Content -->
+
+          <div class="tab-pane fade show" id="tab4">
+            <p>Consequuntur inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-check2"></i>
+              <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
+            </div>
+            <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi dolorum non eveniet magni quaerat nemo et.</p>
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-check2"></i>
+              <h4>Incidunt non veritatis illum ea ut nisi</h4>
+            </div>
+            <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
+          </div><!-- End Tab 3 Content -->
+
+          <div class="tab-pane fade show" id="tab5">
             <p>Consequuntur inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
             <div class="d-flex align-items-center mb-2">
               <i class="bi bi-check2"></i>
