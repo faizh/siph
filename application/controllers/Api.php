@@ -116,4 +116,127 @@ class Api extends CI_Controller {
         echo json_encode($response);
     }
 
+    public function update_status_katup() {
+        $input = (object) $this->input->post();
+
+        if (empty($input->status)){
+            $response = array(
+                'status'    => false,
+                'msg'       => 'parameter status is null'
+            );
+
+            echo json_encode($response);
+            exit;
+        }
+
+        $status     = $input->status;
+
+        if ($status == 'on') {
+            $status = 1;
+        }else {
+            $status = 0;
+        }
+
+        $update = $this->m_monitoring->updateComponentStatus(
+            array('component_status' => $status), 
+            array('component_id' => $this->m_monitoring->katupId())
+        );
+
+        if ($update) {
+            $response = array(
+                'status'    => true,
+                'msg'       => 'Update Success'
+            );
+        } else {
+            $response = array(
+                'status'    => false,
+                'msg'       => 'Update Failed'
+            );
+        }
+
+        echo json_encode($response);
+    }
+
+    public function update_status_pompa() {
+        $input = (object) $this->input->post();
+
+        if (empty($input->status)){
+            $response = array(
+                'status'    => false,
+                'msg'       => 'parameter status is null'
+            );
+
+            echo json_encode($response);
+            exit;
+        }
+
+        $status     = $input->status;
+
+        if ($status == 'on') {
+            $status = 1;
+        }else {
+            $status = 0;
+        }
+
+        $update = $this->m_monitoring->updateComponentStatus(
+            array('component_status' => $status), 
+            array('component_id' => $this->m_monitoring->pompaId())
+        );
+
+        if ($update) {
+            $response = array(
+                'status'    => true,
+                'msg'       => 'update success'
+            );
+        } else {
+            $response = array(
+                'status'    => false,
+                'msg'       => 'update failed'
+            );
+        }
+
+        echo json_encode($response);
+    }
+
+    public function update_status_lampu() {
+        $input = (object) $this->input->post();
+
+        if (empty($input->status)){
+            $response = array(
+                'status'    => false,
+                'msg'       => 'parameter status is null'
+            );
+
+            echo json_encode($response);
+            exit;
+        }
+
+        $status     = $input->status;
+
+        if ($status == 'on') {
+            $status = 1;
+        }else {
+            $status = 0;
+        }
+
+        $update = $this->m_monitoring->updateComponentStatus(
+            array('component_status' => $status), 
+            array('component_id' => $this->m_monitoring->lampuId())
+        );
+
+        if ($update) {
+            $response = array(
+                'status'    => true,
+                'msg'       => 'update success'
+            );
+        } else {
+            $response = array(
+                'status'    => false,
+                'msg'       => 'update failed'
+            );
+        }
+
+        echo json_encode($response);
+    }
+
 }

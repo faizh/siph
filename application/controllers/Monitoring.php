@@ -23,7 +23,7 @@ class Monitoring extends CI_Controller {
         $status_pompa           = $this->m_monitoring->getComponentStatus($this->m_monitoring->pompaId());
         $status_ultrasonik      = $this->m_monitoring->getComponentStatus($this->m_monitoring->ultrasonikId());
         $status_soilMoisture    = $this->m_monitoring->getComponentStatus($this->m_monitoring->soilMoistureId());
-        $status_durasiLampu     = $this->m_monitoring->getComponentStatus($this->m_monitoring->durasiLampuId());
+        $durasi_lampu           = $this->m_monitoring->getLampDuration();
 
         $components = array(
             'katup'         => $status_katup->component_status,
@@ -31,7 +31,7 @@ class Monitoring extends CI_Controller {
             'pompa'         => $status_pompa->component_status,
             'ultrasonik'    => $status_ultrasonik->component_status,
             'soilMoisture'  => $status_soilMoisture->component_status,
-            'durasiLampu'   => $status_durasiLampu->component_status,
+            'durasiLampu'   => $durasi_lampu,
         );
 
         $this->load->view('includes/v_header', compact('page'));
