@@ -51,7 +51,7 @@ class M_monitoring extends CI_Model {
         $duration = $this->db->query($query)->row();
 
         if (empty($duration->created_dtm)) {
-            return 0;
+            return "-";
         }
 
         date_default_timezone_set("Asia/Jakarta");
