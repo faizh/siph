@@ -87,17 +87,13 @@
 <section id="team" class="team mb-0">
   <div class="container" data-aos="fade-up">
     <div class="row">
-      <div class="col-6">
+      <div class="col-2"></div>
+      <div class="col-8">
         <div class="p-2">
           <canvas id="kelembaban-tanah"></canvas>
         </div>
       </div>
-
-      <div class="col-6">
-        <div class="p-2">
-          <canvas id="ketinggian-air"></canvas>
-        </div>
-      </div>
+      <div class="col-3"></div>
     </div>
   </div>
 </section>
@@ -113,20 +109,6 @@
       labels: ['20:30', '20:45', '21:00', '21:15', '21:30', '21:45'],
       datasets: [{
         label: 'Kelembaban Tanah',
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1
-      }]
-    },
-  });
-
-  const ctx2 = document.getElementById('ketinggian-air');
-
-  new Chart(ctx2, {
-    type: 'line',
-    data: {
-      labels: ['20:30', '20:45', '21:00', '21:15', '21:30', '21:45'],
-      datasets: [{
-        label: 'Ketinggian Air',
         data: [12, 19, 3, 5, 2, 3],
         borderWidth: 1
       }]
