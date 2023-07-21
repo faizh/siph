@@ -2,6 +2,14 @@
 .toggle-handle {
     background-color: white;
 }
+
+.title h4 {
+  font-weight: 700;
+  margin-bottom: 5px;
+  font-size: 20px;
+  color: #012970;
+  text-align: center;
+}
 </style>
 
 <!-- ======= Team Section ======= -->
@@ -13,6 +21,10 @@
             <p>Monitor Komponen SIPH</p>
         </header>
 
+        <div class="title">
+          <h4>Sistem Monitoring</h4>
+        </div>
+
         <table class="table table-hover">
         <thead>
             <tr>
@@ -22,13 +34,13 @@
         </thead>
         <tbody>
             <tr>
-                <td>Katup</td>
+                <td>Sistem Irigasi</td>
                 <td>
                     <input type="checkbox" <?= ($components['katup'] == 1) ? 'checked' : '' ?> data-toggle="toggle" data-onstyle="success" data-offstyle="danger" onchange="updateKatup(this)">
                 </td>
             </tr>
             <tr>
-                <td>Pompa</td>
+                <td>Pompa Penyiraman</td>
                 <td>
                     <input type="checkbox" <?= ($components['pompa'] == 1) ? 'checked' : '' ?> data-toggle="toggle" data-onstyle="success" data-offstyle="danger" onchange="updatePompa(this)">
                 </td>
@@ -48,6 +60,10 @@
 <!-- ======= Counts Section ======= -->
 <div id="counts" class="counts mt-0 pt-0">
       <div class="container" data-aos="fade-up">
+        <div class="title">
+          <h4>Data Realtime Sensor</h4>
+        </div>
+
         <div class="row gy-4">
           <div class="col-lg-4 col-md-4">
             <div class="count-box">
@@ -86,6 +102,9 @@
 
 <section id="team" class="team mb-0">
   <div class="container" data-aos="fade-up">
+    <div class="title">
+      <h4>Data Grafik</h4>
+    </div>
     <div class="row">
       <div class="col-2"></div>
       <div class="col-8">
