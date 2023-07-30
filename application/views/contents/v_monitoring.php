@@ -79,7 +79,7 @@
             <div class="count-box">
               <i class="bi bi-percent" style="color: #ee6c20;"></i>
               <div>
-                <span><?= $components['soilMoisture'] ?>%</span>
+                <span><?= $components['soilMoisture1'] ?>%</span>
                 <p>Kelembaban Tanah 1</p>
               </div>
             </div>
@@ -89,7 +89,7 @@
             <div class="count-box">
               <i class="bi bi-percent" style="color: #ee6c20;"></i>
               <div>
-                <span><?= $components['soilMoisture'] ?>%</span>
+                <span><?= $components['soilMoisture2'] ?>%</span>
                 <p>Kelembaban Tanah 2</p>
               </div>
             </div>
@@ -124,11 +124,32 @@
       </div>
       <div class="col-3"></div>
     </div>
+
     <div class="row">
       <div class="col-2"></div>
       <div class="col-8">
         <div class="p-2">
           <canvas id="kelembaban-tanah-2"></canvas>
+        </div>
+      </div>
+      <div class="col-3"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8">
+        <div class="p-2">
+          <canvas id="ketinggian-air"></canvas>
+        </div>
+      </div>
+      <div class="col-3"></div>
+    </div>
+    
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8">
+        <div class="p-2">
+          <canvas id="intensitas-cahaya"></canvas>
         </div>
       </div>
       <div class="col-3"></div>
@@ -161,6 +182,32 @@
       datasets: [{
         label: 'Kelembaban Tanah 2',
         data: [<?php echo implode(',', $graph['tanah2Status']) ?>],
+        borderWidth: 1
+      }]
+    },
+  });
+
+  const ctx3 = document.getElementById('ketinggian-air');
+  new Chart(ctx3, {
+    type: 'line',
+    data: {
+      labels: [<?php echo '"'.implode('","', $graph['ketinggianAirTimes']).'"' ?>],
+      datasets: [{
+        label: 'Ketinggian Air',
+        data: [<?php echo implode(',', $graph['ketinggianAirStatus']) ?>],
+        borderWidth: 1
+      }]
+    },
+  });
+
+  const ctx4 = document.getElementById('intensitas-cahaya');
+  new Chart(ctx4, {
+    type: 'line',
+    data: {
+      labels: [<?php echo '"'.implode('","', $graph['intensitasCahayaTimes']).'"' ?>],
+      datasets: [{
+        label: 'Intensitas Cahaya',
+        data: [<?php echo implode(',', $graph['intensitasCahayaStatus']) ?>],
         borderWidth: 1
       }]
     },

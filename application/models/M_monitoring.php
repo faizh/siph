@@ -30,6 +30,10 @@ class M_monitoring extends CI_Model {
         return 6;
     }
 
+    function sensorLdr() {
+        return 8;
+    }
+
     public function getComponentStatus($component_id){
         $this->db->select('*');
         $this->db->where('component_id', $component_id);
@@ -84,7 +88,7 @@ class M_monitoring extends CI_Model {
     function getComponentStatusLog($component_status_id) {
         $query = "SELECT 
                 csl.`status`,
-                DATE_FORMAT(csl.`created_dtm`, '%H:%m:%s') AS hours
+                DATE_FORMAT(csl.`created_dtm`, '%H:%i:%s') AS hours
                 FROM `t_component_status` cs
                 JOIN `t_component_status_log` csl ON csl.`component_status_id` = cs.`id`
                 WHERE cs.`id` = ?

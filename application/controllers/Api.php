@@ -78,6 +78,24 @@ class Api extends CI_Controller {
             );
         }
 
+        $component_status = $this->m_monitoring->getComponentStatus($this->m_monitoring->ultrasonikId());
+        $insert_log = $this->m_monitoring->insertLogStatus(array(
+            "component_status_id"   => $component_status->id,
+            "status"                => $ketinggian_air
+        ));
+
+        if ($insert_log) {
+            $response = array(
+                'status'    => true,
+                'msg'       => 'update success'
+            );
+        } else {
+            $response = array(
+                'status'    => false,
+                'msg'       => 'insert log failed'
+            );
+        }
+
         echo json_encode($response);
     }
 
@@ -276,6 +294,59 @@ class Api extends CI_Controller {
             $response = array(
                 'status'    => false,
                 'msg'       => 'update failed'
+            );
+        }
+
+        echo json_encode($response);
+    }
+
+    public function update_sensor_ldr() {
+        $input = (object) $this->input->post();
+
+        if (empty($input->intensitas_cahaya)){
+            $response = array(
+                'status'    => false,
+                'msg'       => 'parameter intensitas_cahaya is null'
+            );
+
+            echo json_encode($response);
+            exit;
+        }
+
+        $intensitas_cahaya     = $input->intensitas_cahaya;
+
+        $update = $this->m_monitoring->updateComponentStatus(
+            array('component_status' => $intensitas_cahaya), 
+            array('component_id' => $this->m_monitoring->sensorLdr())
+        );
+
+        if ($update) {
+            $response = array(
+                'status'    => true,
+                'msg'       => 'update success'
+            );
+        } else {
+            $response = array(
+                'status'    => false,
+                'msg'       => 'update failed'
+            );
+        }
+
+        $component_status = $this->m_monitoring->getComponentStatus($this->m_monitoring->sensorLdr());
+        $insert_log = $this->m_monitoring->insertLogStatus(array(
+            "component_status_id"   => $component_status->id,
+            "status"                => $intensitas_cahaya
+        ));
+
+        if ($insert_log) {
+            $response = array(
+                'status'    => true,
+                'msg'       => 'update success'
+            );
+        } else {
+            $response = array(
+                'status'    => false,
+                'msg'       => 'insert log failed'
             );
         }
 
