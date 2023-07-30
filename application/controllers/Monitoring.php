@@ -25,6 +25,27 @@ class Monitoring extends CI_Controller {
         $status_soilMoisture    = $this->m_monitoring->getComponentStatus($this->m_monitoring->soilMoistureId());
         $durasi_lampu           = $this->m_monitoring->getLampDuration();
 
+        /** processing data for graph kelembaban tanah 1 */
+        $components_status      = $component_status = $this->m_monitoring->getComponentStatus($this->m_monitoring->soilMoistureId());
+        $logStatusTanah1        = $this->m_monitoring->getComponentStatusLog($component_status->id);
+        foreach ($logStatusTanah1 as $log) {
+            $tanah1Times[] = $log->hours;
+            $tanah1Status[] = $log->status;
+        }
+        krsort($tanah1Times);
+        krsort($tanah1Status);
+
+        /** processing data for graph kelembaban tanah 2 */
+        $components_status      = $component_status = $this->m_monitoring->getComponentStatus($this->m_monitoring->soilMoistureId2());
+        $logStatusTanah1        = $this->m_monitoring->getComponentStatusLog($component_status->id);
+        foreach ($logStatusTanah1 as $log) {
+            $tanah2Times[] = $log->hours;
+            $tanah2Status[] = $log->status;
+        }
+        krsort($tanah2Times);
+        krsort($tanah2Status);
+        
+
         $components = array(
             'katup'         => $status_katup->component_status,
             'lampu'         => $status_lampu->component_status,
@@ -34,8 +55,15 @@ class Monitoring extends CI_Controller {
             'durasiLampu'   => $durasi_lampu,
         );
 
+        $graph = array(
+            'tanah1Times'   => $tanah1Times,
+            'tanah1Status'  => $tanah1Status,
+            'tanah2Times'   => $tanah2Times,
+            'tanah2Status'  => $tanah2Status
+        );
+
         $this->load->view('includes/v_header', compact('page'));
-        $this->load->view('contents/v_monitoring', compact('components'));
+        $this->load->view('contents/v_monitoring', compact('components', 'graph'));
         $this->load->view('includes/v_footer');
     }
 }

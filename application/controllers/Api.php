@@ -94,11 +94,36 @@ class Api extends CI_Controller {
             exit;
         }
 
+        if (empty($input->id_tanah)){
+            $response = array(
+                'status'    => false,
+                'msg'       => 'parameter id_tanah is null'
+            );
+
+            echo json_encode($response);
+            exit;
+        }
+
         $kelembaban_tanah     = $input->kelembaban_tanah;
+        $id_tanah             = $input->id_tanah;
+
+        if ($id_tanah == 1) {
+            $component_id = $this->m_monitoring->soilMoistureId();
+        } elseif ($id_tanah == 2) {
+            $component_id = $this->m_monitoring->soilMoistureId2();
+        } else {
+            $response = array(
+                'status'    => false,
+                'msg'       => 'parameter id_tanah is invalid'
+            );
+
+            echo json_encode($response);
+            exit;
+        }
 
         $update = $this->m_monitoring->updateComponentStatus(
             array('component_status' => $kelembaban_tanah), 
-            array('component_id' => $this->m_monitoring->soilMoistureId())
+            array('component_id' => $component_id)
         );
 
         if ($update) {
@@ -110,6 +135,24 @@ class Api extends CI_Controller {
             $response = array(
                 'status'    => false,
                 'msg'       => 'update failed'
+            );
+        }
+
+        $component_status = $this->m_monitoring->getComponentStatus($component_id);
+        $insert_log = $this->m_monitoring->insertLogStatus(array(
+            "component_status_id"   => $component_status->id,
+            "status"                => $kelembaban_tanah
+        ));
+
+        if ($insert_log) {
+            $response = array(
+                'status'    => true,
+                'msg'       => 'update success'
+            );
+        } else {
+            $response = array(
+                'status'    => false,
+                'msg'       => 'insert log failed'
             );
         }
 

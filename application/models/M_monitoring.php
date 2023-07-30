@@ -22,6 +22,10 @@ class M_monitoring extends CI_Model {
         return 5;
     }
 
+    function soilMoistureId2() {
+        return 7;
+    }
+
     function durasiLampuId() {
         return 6;
     }
@@ -67,6 +71,29 @@ class M_monitoring extends CI_Model {
         $fullSeconds = floor($diff-($fullHours*60*60)-($fullMinutes*60));
 
         return sprintf("%02d",$fullHours) . "h " . sprintf("%02d",$fullMinutes) . "m";
+    }
+
+    function insertLogStatus($data=array()) {
+        if( !$this->db->insert('t_component_status_log', $data) ){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    function getComponentStatusLog($component_status_id) {
+        $query = "SELECT 
+                csl.`status`,
+                DATE_FORMAT(csl.`created_dtm`, '%H:%m:%s') AS hours
+                FROM `t_component_status` cs
+                JOIN `t_component_status_log` csl ON csl.`component_status_id` = cs.`id`
+                WHERE cs.`id` = ?
+                GROUP BY hours
+                ORDER BY csl.`created_dtm` DESC
+                LIMIT 5";
+        
+        return $this->db->query($query, array($component_status_id))->result();
+        
     }
 
 }
