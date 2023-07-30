@@ -65,7 +65,7 @@
         </div>
 
         <div class="row gy-4">
-          <div class="col-lg-4 col-md-4">
+          <div class="col-lg-3 col-md-3">
             <div class="count-box">
               <i class="bi bi-water"></i>
               <div>
@@ -75,21 +75,31 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-4">
+          <div class="col-lg-3 col-md-3">
             <div class="count-box">
               <i class="bi bi-percent" style="color: #ee6c20;"></i>
               <div>
-                <span><?= $components['soilMoisture'] ?>%</span>
-                <p>Kelembaban Tanah</p>
+                <span><?= $components['soilMoisture1'] ?>%</span>
+                <p>Kelembaban Tanah 1</p>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-4">
+          <div class="col-lg-3 col-md-3">
+            <div class="count-box">
+              <i class="bi bi-percent" style="color: #ee6c20;"></i>
+              <div>
+                <span><?= $components['soilMoisture2'] ?>%</span>
+                <p>Kelembaban Tanah 2</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-3">
             <div class="count-box">
               <i class="bi bi-lightbulb" style="color: #15be56;"></i>
               <div>
-                <span><?= $components['durasiLampu'] ?></span>
+                <span style="font-size: 30px;"><?= $components['durasiLampu'] ?></span>
                 <p>Durasi Lampu Menyala</p>
               </div>
             </div>
@@ -109,7 +119,37 @@
       <div class="col-2"></div>
       <div class="col-8">
         <div class="p-2">
-          <canvas id="kelembaban-tanah"></canvas>
+          <canvas id="kelembaban-tanah-1"></canvas>
+        </div>
+      </div>
+      <div class="col-3"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8">
+        <div class="p-2">
+          <canvas id="kelembaban-tanah-2"></canvas>
+        </div>
+      </div>
+      <div class="col-3"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8">
+        <div class="p-2">
+          <canvas id="ketinggian-air"></canvas>
+        </div>
+      </div>
+      <div class="col-3"></div>
+    </div>
+    
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8">
+        <div class="p-2">
+          <canvas id="intensitas-cahaya"></canvas>
         </div>
       </div>
       <div class="col-3"></div>
@@ -120,15 +160,54 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-  const ctx = document.getElementById('kelembaban-tanah');
+  const ctx = document.getElementById('kelembaban-tanah-1');
 
   new Chart(ctx, {
     type: 'line',
     data: {
-      labels: ['20:30', '20:45', '21:00', '21:15', '21:30', '21:45'],
+      labels: [<?php echo '"'.implode('","', $graph['tanah1Times']).'"' ?>],
       datasets: [{
-        label: 'Kelembaban Tanah',
-        data: [12, 19, 3, 5, 2, 3],
+        label: 'Kelembaban Tanah 1',
+        data: [<?php echo implode(',', $graph['tanah1Status']) ?>],
+        borderWidth: 1
+      }]
+    },
+  });
+
+  const ctx2 = document.getElementById('kelembaban-tanah-2');
+  new Chart(ctx2, {
+    type: 'line',
+    data: {
+      labels: [<?php echo '"'.implode('","', $graph['tanah2Times']).'"' ?>],
+      datasets: [{
+        label: 'Kelembaban Tanah 2',
+        data: [<?php echo implode(',', $graph['tanah2Status']) ?>],
+        borderWidth: 1
+      }]
+    },
+  });
+
+  const ctx3 = document.getElementById('ketinggian-air');
+  new Chart(ctx3, {
+    type: 'line',
+    data: {
+      labels: [<?php echo '"'.implode('","', $graph['ketinggianAirTimes']).'"' ?>],
+      datasets: [{
+        label: 'Ketinggian Air',
+        data: [<?php echo implode(',', $graph['ketinggianAirStatus']) ?>],
+        borderWidth: 1
+      }]
+    },
+  });
+
+  const ctx4 = document.getElementById('intensitas-cahaya');
+  new Chart(ctx4, {
+    type: 'line',
+    data: {
+      labels: [<?php echo '"'.implode('","', $graph['intensitasCahayaTimes']).'"' ?>],
+      datasets: [{
+        label: 'Intensitas Cahaya',
+        data: [<?php echo implode(',', $graph['intensitasCahayaStatus']) ?>],
         borderWidth: 1
       }]
     },

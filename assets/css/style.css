@@ -1415,6 +1415,7 @@ section {
 }
 
 .team .member .member-img {
+  text-align:center;
   position: relative;
   overflow: hidden;
 }
@@ -2404,4 +2405,11 @@ section {
   text-align: center;
   font-size: 13px;
   color: #012970;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 10%;
 }

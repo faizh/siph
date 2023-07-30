@@ -46,7 +46,7 @@ class Auth extends CI_Controller {
             );
             $this->session->set_userdata($sess_data);
 
-            redirect('');
+            redirect('monitoring');
         }else {
             redirect('auth/login');
         }
