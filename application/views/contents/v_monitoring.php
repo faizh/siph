@@ -34,21 +34,35 @@
         </thead>
         <tbody>
             <tr>
-                <td>Sistem Irigasi</td>
                 <td>
-                    <input type="checkbox" <?= ($components['katup'] == 1) ? 'checked' : '' ?> data-toggle="toggle" data-onstyle="success" data-offstyle="danger" onchange="updateKatup(this)">
+                  <a href="#!" style="color: inherit" onclick="toogleComponents()">Sistem Irigasi <i id="dropdown-icon" class="bi bi-chevron-down"></i></a>
+                </td>
+                <td>
+                    <input type="checkbox" <?= ($components['status_irigasi'] == 1) ? 'checked' : '' ?> data-toggle="toggle" data-onstyle="success" data-offstyle="danger" onchange="updateKatup(this)" disabled>
+                </td>
+            </tr>
+            <tr class="sistem-irigasi" hidden="hidden">
+                <td>Sistem Irigasi <b>(Valve In)</b></td>
+                <td>
+                    <input type="checkbox" <?= ($components['katup_in'] == 1) ? 'checked' : '' ?> data-toggle="toggle" data-onstyle="success" data-offstyle="danger" onchange="updateKatup(this)" disabled>
+                </td>
+            </tr>
+            <tr class="sistem-irigasi" hidden="hidden">
+                <td>Sistem Irigasi <b>(Valve Out)</b></td>
+                <td>
+                    <input type="checkbox" <?= ($components['katup_out'] == 1) ? 'checked' : '' ?> data-toggle="toggle" data-onstyle="success" data-offstyle="danger" onchange="updateKatup(this)" disabled>
                 </td>
             </tr>
             <tr>
                 <td>Pompa Penyiraman</td>
                 <td>
-                    <input type="checkbox" <?= ($components['pompa'] == 1) ? 'checked' : '' ?> data-toggle="toggle" data-onstyle="success" data-offstyle="danger" onchange="updatePompa(this)">
+                    <input type="checkbox" <?= ($components['pompa'] == 1) ? 'checked' : '' ?> data-toggle="toggle" data-onstyle="success" data-offstyle="danger" onchange="updatePompa(this)" disabled>
                 </td>
             </tr>
             <tr>
                 <td>Lampu</td>
                 <td>
-                    <input type="checkbox" <?= ($components['lampu'] == 1) ? 'checked' : '' ?> data-toggle="toggle" data-onstyle="success" data-offstyle="danger" onchange="updateLampu(this)">
+                    <input type="checkbox" <?= ($components['lampu'] == 1) ? 'checked' : '' ?> data-toggle="toggle" data-onstyle="success" data-offstyle="danger" onchange="updateLampu(this)" disabled>
                 </td>
             </tr>
         </tbody>
@@ -99,8 +113,10 @@
             <div class="count-box">
               <i class="bi bi-lightbulb" style="color: #15be56;"></i>
               <div>
-                <span style="font-size: 30px;"><?= $components['durasiLampu'] ?></span>
-                <p>Durasi Lampu Menyala</p>
+                <!-- <span style="font-size: 30px;"><?= $components['durasiLampu'] ?></span>
+                <p>Durasi Lampu Menyala</p> -->
+                <span><?= $components['ldr'] == 0 ? 'Siang' : 'Malam' ?></span>
+                <p>Sensor LDR</p>
               </div>
             </div>
           </div>
@@ -116,43 +132,31 @@
       <h4>Data Grafik</h4>
     </div>
     <div class="row">
-      <div class="col-2"></div>
-      <div class="col-8">
+      <div class="col-6">
         <div class="p-2">
           <canvas id="kelembaban-tanah-1"></canvas>
         </div>
       </div>
-      <div class="col-3"></div>
-    </div>
 
-    <div class="row">
-      <div class="col-2"></div>
-      <div class="col-8">
+      <div class="col-6">
         <div class="p-2">
           <canvas id="kelembaban-tanah-2"></canvas>
         </div>
       </div>
-      <div class="col-3"></div>
     </div>
 
-    <div class="row">
-      <div class="col-2"></div>
-      <div class="col-8">
+    <div class="row mt-3">
+      <div class="col-6">
         <div class="p-2">
           <canvas id="ketinggian-air"></canvas>
         </div>
       </div>
-      <div class="col-3"></div>
-    </div>
-    
-    <div class="row">
-      <div class="col-2"></div>
-      <div class="col-8">
+
+      <div class="col-6">
         <div class="p-2">
           <canvas id="intensitas-cahaya"></canvas>
         </div>
       </div>
-      <div class="col-3"></div>
     </div>
   </div>
 </section>
@@ -311,4 +315,24 @@
     });
   }
   
+  function toogleComponents() {
+    $('.sistem-irigasi').each(function(i, obj) {
+        let hidden = obj.getAttribute("hidden");
+
+        if (hidden) {
+          obj.removeAttribute("hidden");
+        } else {
+          obj.setAttribute("hidden", "hidden");
+        }
+    });
+
+    var dropdown_icon =document.getElementById("dropdown-icon");
+    if ( dropdown_icon.classList.contains('bi-chevron-down') ) {
+      dropdown_icon.classList.remove('bi-chevron-down');
+      dropdown_icon.classList.add('bi-chevron-up');
+    } else {
+      dropdown_icon.classList.remove('bi-chevron-up');
+      dropdown_icon.classList.add('bi-chevron-down');
+    }
+  }
 </script>

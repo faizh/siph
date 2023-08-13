@@ -190,7 +190,18 @@ class Api extends CI_Controller {
             exit;
         }
 
+        if (empty($input->type)){
+            $response = array(
+                'status'    => false,
+                'msg'       => 'parameter type is null'
+            );
+
+            echo json_encode($response);
+            exit;
+        }
+
         $status     = $input->status;
+        $type       = $input->type;
 
         if ($status == 'on') {
             $status = 1;
@@ -198,9 +209,23 @@ class Api extends CI_Controller {
             $status = 0;
         }
 
+        if ($type == 'in') {
+            $component_id = $this->m_monitoring->katupId();
+        } elseif ($type == 'out') {
+            $component_id = $this->m_monitoring->katupOutId();
+        } else {
+            $response = array(
+                'status'    => false,
+                'msg'       => 'type value is invalid'
+            );
+
+            echo json_encode($response);
+            exit;
+        }
+        
         $update = $this->m_monitoring->updateComponentStatus(
             array('component_status' => $status), 
-            array('component_id' => $this->m_monitoring->katupId())
+            array('component_id' => $component_id)
         );
 
         if ($update) {
