@@ -34,6 +34,10 @@ class M_monitoring extends CI_Model {
         return 8;
     }
 
+    function katupOutId() {
+        return 9;
+    }
+
     public function getComponentStatus($component_id){
         $this->db->select('*');
         $this->db->where('component_id', $component_id);
@@ -96,8 +100,7 @@ class M_monitoring extends CI_Model {
                 ORDER BY csl.`created_dtm` DESC
                 LIMIT 5";
         
-        return $this->db->query($query, array($component_status_id))->result();
-        
+        return $this->db->query($query, array($component_status_id))->result();   
     }
 
 }

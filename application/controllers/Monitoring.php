@@ -18,13 +18,16 @@ class Monitoring extends CI_Controller {
         $page = 'monitoring';
 
         
-        $status_katup           = $this->m_monitoring->getComponentStatus($this->m_monitoring->katupId());
+        $status_katup_in        = $this->m_monitoring->getComponentStatus($this->m_monitoring->katupId());
+        $status_katup_out       = $this->m_monitoring->getComponentStatus($this->m_monitoring->katupOutId());
         $status_lampu           = $this->m_monitoring->getComponentStatus($this->m_monitoring->lampuId());
         $status_pompa           = $this->m_monitoring->getComponentStatus($this->m_monitoring->pompaId());
         $status_ultrasonik      = $this->m_monitoring->getComponentStatus($this->m_monitoring->ultrasonikId());
         $status_soilMoisture_1  = $this->m_monitoring->getComponentStatus($this->m_monitoring->soilMoistureId());
         $status_soilMoisture_2  = $this->m_monitoring->getComponentStatus($this->m_monitoring->soilMoistureId2());
         $durasi_lampu           = $this->m_monitoring->getLampDuration();
+        $status_ldr             = $this->m_monitoring->getComponentStatus($this->m_monitoring->sensorLdr());
+        $status_irigasi         = ($status_katup_in->component_status == 1 || $status_katup_out->component_status == 1) ? 1 : 0;
 
         /** processing data for graph kelembaban tanah 1 */
         $components_status      = $component_status = $this->m_monitoring->getComponentStatus($this->m_monitoring->soilMoistureId());
@@ -68,13 +71,16 @@ class Monitoring extends CI_Controller {
         
 
         $components = array(
-            'katup'         => $status_katup->component_status,
-            'lampu'         => $status_lampu->component_status,
-            'pompa'         => $status_pompa->component_status,
-            'ultrasonik'    => $status_ultrasonik->component_status,
-            'soilMoisture1'  => $status_soilMoisture_1->component_status,
-            'soilMoisture2'  => $status_soilMoisture_2->component_status,
-            'durasiLampu'   => $durasi_lampu,
+            'status_irigasi'    => $status_irigasi,
+            'katup_in'          => $status_katup_in->component_status,
+            'katup_out'         => $status_katup_out->component_status,
+            'lampu'             => $status_lampu->component_status,
+            'pompa'             => $status_pompa->component_status,
+            'ultrasonik'        => $status_ultrasonik->component_status,
+            'soilMoisture1'     => $status_soilMoisture_1->component_status,
+            'soilMoisture2'     => $status_soilMoisture_2->component_status,
+            'durasiLampu'       => $durasi_lampu,
+            'ldr'               => $status_ldr->component_status
         );
 
         $graph = array(
