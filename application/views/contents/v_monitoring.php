@@ -115,7 +115,7 @@
               <div>
                 <!-- <span style="font-size: 30px;"><?= $components['durasiLampu'] ?></span>
                 <p>Durasi Lampu Menyala</p> -->
-                <span><?= $components['ldr'] == 0 ? 'Siang' : 'Malam' ?></span>
+                <span><?= $components['ldr'] == 0 ? 'Malam' : 'Siang' ?></span>
                 <p>Sensor LDR</p>
               </div>
             </div>
