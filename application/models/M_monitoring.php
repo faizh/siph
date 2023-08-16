@@ -95,10 +95,11 @@ class M_monitoring extends CI_Model {
                 DATE_FORMAT(csl.`created_dtm`, '%H:%i:%s') AS hours
                 FROM `t_component_status` cs
                 JOIN `t_component_status_log` csl ON csl.`component_status_id` = cs.`id`
-                WHERE cs.`id` = ?
+                WHERE cs.`id` = ? 
+                AND DATE(csl.`created_dtm`) = CURDATE()
                 GROUP BY hours
                 ORDER BY csl.`created_dtm` DESC
-                LIMIT 5";
+                -- LIMIT 10";
         
         return $this->db->query($query, array($component_status_id))->result();   
     }

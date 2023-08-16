@@ -41,7 +41,7 @@
       </div>
 
       <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-        <img src="assets/img/about.png" class="img-fluid" alt="">
+        <img src="assets/img/about2.png" class="img-fluid" alt="">
       </div>
 
     </div>
@@ -130,6 +130,30 @@
           <img src="assets/img/nozzel.png" class="img-fluid" alt="" style="height: 200px">
           <h3>Nozzel Spray</h3>
           <p>Digunakan untuk melakukan proses penyiraman tanaman bawang merah.</p>
+        </div>
+      </div>
+
+        <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="600">
+        <div class="box">
+          <img src="assets/img/relay.jpg" class="img-fluid" alt="" style="height: 200px">
+          <h3>Relays</h3>
+          <p>Digunakan untuk mengontrol aliran arus listrik dengan menggunakan sinyal kontrol dari sirkuit yang lebih besar.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="600">
+        <div class="box">
+          <img src="assets/img/modem.jpg" class="img-fluid" alt="" style="height: 200px">
+          <h3>Modem</h3>
+          <p>Digunakan untuk mengirimkan dan menerima data melalui jaringan telekomunikasi.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="600">
+        <div class="box">
+          <img src="assets/img/power supply.png" class="img-fluid" alt="" style="height: 200px">
+          <h3>Power Supply DC 12V</h3>
+          <p>Digunakan untuk memberikan arus listrik DC yang dibutuhkan oleh perangkat keras dalam komputer.</p>
         </div>
       </div>
 

@@ -115,7 +115,7 @@
               <div>
                 <!-- <span style="font-size: 30px;"><?= $components['durasiLampu'] ?></span>
                 <p>Durasi Lampu Menyala</p> -->
-                <span><?= $components['ldr'] == 0 ? 'Siang' : 'Malam' ?></span>
+                <span><?= $components['ldr'] == 0 ? 'Malam' : 'Siang' ?></span>
                 <p>Sensor LDR</p>
               </div>
             </div>
@@ -132,31 +132,39 @@
       <h4>Data Grafik</h4>
     </div>
     <div class="row">
-      <div class="col-6">
+      <div class="col-2"></div>
+      <div class="col-8">
         <div class="p-2">
           <canvas id="kelembaban-tanah-1"></canvas>
         </div>
       </div>
+      <div class="col-2"></div>
 
-      <div class="col-6">
+      <div class="col-2"></div>
+      <div class="col-8">
         <div class="p-2">
           <canvas id="kelembaban-tanah-2"></canvas>
         </div>
       </div>
+      <div class="col-2"></div>
     </div>
 
     <div class="row mt-3">
-      <div class="col-6">
+      <div class="col-2"></div>
+      <div class="col-8">
         <div class="p-2">
           <canvas id="ketinggian-air"></canvas>
         </div>
       </div>
+      <div class="col-2"></div>
 
-      <div class="col-6">
+      <div class="col-2"></div>
+      <div class="col-8">
         <div class="p-2">
           <canvas id="intensitas-cahaya"></canvas>
         </div>
       </div>
+      <div class="col-2"></div>
     </div>
   </div>
 </section>
