@@ -32,6 +32,8 @@ class Monitoring extends CI_Controller {
         /** processing data for graph kelembaban tanah 1 */
         $components_status      = $component_status = $this->m_monitoring->getComponentStatus($this->m_monitoring->soilMoistureId());
         $logData                = $this->m_monitoring->getComponentStatusLog($component_status->id);
+        $tanah1Times            = array();
+        $tanah1Status           = array();
         foreach ($logData as $log) {
             $tanah1Times[] = $log->hours;
             $tanah1Status[] = $log->status;
@@ -42,6 +44,8 @@ class Monitoring extends CI_Controller {
         /** processing data for graph kelembaban tanah 2 */
         $components_status      = $component_status = $this->m_monitoring->getComponentStatus($this->m_monitoring->soilMoistureId2());
         $logData                = $this->m_monitoring->getComponentStatusLog($component_status->id);
+        $tanah2Times            = array();
+        $tanah2Status           = array();
         foreach ($logData as $log) {
             $tanah2Times[] = $log->hours;
             $tanah2Status[] = $log->status;
@@ -52,6 +56,8 @@ class Monitoring extends CI_Controller {
         /** processing data for graph ketinggian air */
         $components_status      = $component_status = $this->m_monitoring->getComponentStatus($this->m_monitoring->ultrasonikId());
         $logData                = $this->m_monitoring->getComponentStatusLog($component_status->id);
+        $ketinggianAirTimes     = array();
+        $ketinggianAirStatus    = array();
         foreach ($logData as $log) {
             $ketinggianAirTimes[] = $log->hours;
             $ketinggianAirStatus[] = $log->status;
@@ -62,6 +68,8 @@ class Monitoring extends CI_Controller {
         /** processing data for graph intensitas cahaya */
         $components_status      = $component_status = $this->m_monitoring->getComponentStatus($this->m_monitoring->sensorLdr());
         $logData                = $this->m_monitoring->getComponentStatusLog($component_status->id);
+        $intensitasCahayaTimes  = array();
+        $intensitasCahayaStatus = array();
         foreach ($logData as $log) {
             $intensitasCahayaTimes[] = $log->hours;
             $intensitasCahayaStatus[] = $log->status;
