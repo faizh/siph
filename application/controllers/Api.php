@@ -49,10 +49,10 @@ class Api extends CI_Controller {
     public function update_ketinggian_air() {
         $input = (object) $this->input->post();
 
-        if (empty($input->ketinggian_air)){
+        if ( !isset($input->ketinggian_air) ){
             $response = array(
                 'status'    => false,
-                'msg'       => 'parameter ketinggian_air is null'
+                'msg'       => 'parameter ketinggian_air is required'
             );
 
             echo json_encode($response);
@@ -102,10 +102,10 @@ class Api extends CI_Controller {
     public function update_kelembaban_tanah() {
         $input = (object) $this->input->post();
 
-        if (empty($input->kelembaban_tanah)){
+        if ( !isset($input->kelembaban_tanah) ){
             $response = array(
                 'status'    => false,
-                'msg'       => 'parameter kelembaban_tanah is null'
+                'msg'       => 'parameter kelembaban_tanah is required'
             );
 
             echo json_encode($response);
@@ -113,6 +113,16 @@ class Api extends CI_Controller {
         }
 
         if (empty($input->id_tanah)){
+            $response = array(
+                'status'    => false,
+                'msg'       => 'parameter id_tanah is null'
+            );
+
+            echo json_encode($response);
+            exit;
+        }
+
+        if ($input->kelembaban_tanah == null) {
             $response = array(
                 'status'    => false,
                 'msg'       => 'parameter id_tanah is null'
@@ -328,7 +338,17 @@ class Api extends CI_Controller {
     public function update_sensor_ldr() {
         $input = (object) $this->input->post();
 
-        if (empty($input->intensitas_cahaya)){
+        if ( !isset($input->intensitas_cahaya) ){
+            $response = array(
+                'status'    => false,
+                'msg'       => 'parameter intensitas_cahaya is required'
+            );
+
+            echo json_encode($response);
+            exit;
+        }
+
+        if ($input->intensitas_cahaya == null) {
             $response = array(
                 'status'    => false,
                 'msg'       => 'parameter intensitas_cahaya is null'
