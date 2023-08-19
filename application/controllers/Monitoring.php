@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $page = $_SERVER['PHP_SELF'];
-$sec = "5";
+$sec = "15";
 header("Refresh: $sec; url=$page");
 
 class Monitoring extends CI_Controller {
